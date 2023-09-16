@@ -1,27 +1,27 @@
-package com.example.springbootshoppingcart.model;
+package com.example.springbootshoppingcart.dto;
 
 import com.example.springbootshoppingcart.constant.ProductCategory;
 
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
-public class Product {
-    private Integer productId;
+public class ProductRequest {
+
+    @NotNull
     private String productName;
+
+    @NotNull
     private ProductCategory category;
+
+    @NotNull
     private String imageUrl;
+
+    @NotNull
     private Integer price;
+
+    @NotNull
     private Integer stock;
-    private String descripition;
-    private Date createDate;
-    private Date lastModifiedDate;
-
-    public Integer getProductId() {
-        return productId;
-    }
-
-    public void setProductId(Integer productId) {
-        this.productId = productId;
-    }
+    private String description;
 
     public String getProductName() {
         return productName;
@@ -63,27 +63,11 @@ public class Product {
         this.stock = stock;
     }
 
-    public String getDescripition() {
-        return descripition;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescripition(String descripition) {
-        this.descripition = descripition;
-    }
-
-    public Date getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
-    }
-
-    public Date getLastModifiedDate() {
-        return lastModifiedDate;
-    }
-
-    public void setLastModifiedDate(Date lastModifiedDate) {
-        this.lastModifiedDate = lastModifiedDate;
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
