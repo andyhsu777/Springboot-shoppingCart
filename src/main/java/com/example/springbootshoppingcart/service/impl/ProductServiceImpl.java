@@ -1,8 +1,7 @@
 package com.example.springbootshoppingcart.service.impl;
 
-import com.example.springbootshoppingcart.constant.ProductCategory;
 import com.example.springbootshoppingcart.dao.ProductDao;
-import com.example.springbootshoppingcart.dto.ProdcuctQueryParams;
+import com.example.springbootshoppingcart.dto.ProductQueryParams;
 import com.example.springbootshoppingcart.dto.ProductRequest;
 import com.example.springbootshoppingcart.model.Product;
 import com.example.springbootshoppingcart.service.ProductService;
@@ -18,13 +17,13 @@ public class ProductServiceImpl implements ProductService {
     private ProductDao productDao;
 
     @Override
-    public Integer countProducts(ProdcuctQueryParams prodcuctQueryParams) {
-        return productDao.countProducts(prodcuctQueryParams);
+    public Integer countProducts(ProductQueryParams productQueryParams) {
+        return productDao.countProducts(productQueryParams);
     }
 
     @Override
-    public List<Product> getProducts(ProdcuctQueryParams prodcuctQueryParams) {
-        return productDao.getProducts(prodcuctQueryParams);
+    public List<Product> getProducts(ProductQueryParams productQueryParams) {
+        return productDao.getProducts(productQueryParams);
     }
 
     @Override

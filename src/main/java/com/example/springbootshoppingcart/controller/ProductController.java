@@ -1,7 +1,7 @@
 package com.example.springbootshoppingcart.controller;
 
 import com.example.springbootshoppingcart.constant.ProductCategory;
-import com.example.springbootshoppingcart.dto.ProdcuctQueryParams;
+import com.example.springbootshoppingcart.dto.ProductQueryParams;
 import com.example.springbootshoppingcart.dto.ProductRequest;
 import com.example.springbootshoppingcart.model.Product;
 import com.example.springbootshoppingcart.service.ProductService;
@@ -33,16 +33,16 @@ public class ProductController {
             @RequestParam(defaultValue = "5") @Max(1000) @Min(0) Integer limit,
             @RequestParam(defaultValue = "0") @Min(0) Integer offset
     ){
-        ProdcuctQueryParams prodcuctQueryParams = new ProdcuctQueryParams();
-        prodcuctQueryParams.setCategory(category);
-        prodcuctQueryParams.setSearch(search);
-        prodcuctQueryParams.setOrderBy(orderBy);
-        prodcuctQueryParams.setSort(sort);
-        prodcuctQueryParams.setLimit(limit);
-        prodcuctQueryParams.setOffset(offset);
-        List<Product> productList = productService.getProducts(prodcuctQueryParams);
+        ProductQueryParams productQueryParams = new ProductQueryParams();
+        productQueryParams.setCategory(category);
+        productQueryParams.setSearch(search);
+        productQueryParams.setOrderBy(orderBy);
+        productQueryParams.setSort(sort);
+        productQueryParams.setLimit(limit);
+        productQueryParams.setOffset(offset);
+        List<Product> productList = productService.getProducts(productQueryParams);
 
-        Integer total = productService.countProducts(prodcuctQueryParams);
+        Integer total = productService.countProducts(productQueryParams);
 
         Page<Product> page = new Page<>();
         page.setLimit(limit);

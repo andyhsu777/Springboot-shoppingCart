@@ -1,7 +1,6 @@
 package com.example.springbootshoppingcart.dao;
 
-import com.example.springbootshoppingcart.constant.ProductCategory;
-import com.example.springbootshoppingcart.dto.ProdcuctQueryParams;
+import com.example.springbootshoppingcart.dto.ProductQueryParams;
 import com.example.springbootshoppingcart.dto.ProductRequest;
 import com.example.springbootshoppingcart.model.Product;
 
@@ -10,9 +9,9 @@ import java.util.List;
 
 public interface ProductDao {
 
-    Integer countProducts(ProdcuctQueryParams prodcuctQueryParams);
+    Integer countProducts(ProductQueryParams productQueryParams);
 
-    List<Product> getProducts(ProdcuctQueryParams prodcuctQueryParams);
+    List<Product> getProducts(ProductQueryParams productQueryParams);
 
     Product getProductById(Integer productId);
 

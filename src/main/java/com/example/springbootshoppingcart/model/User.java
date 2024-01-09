@@ -7,7 +7,7 @@ import java.util.Date;
 
 public class User {
     private int userId;
-    @JsonProperty("e_mail")
+    //@JsonProperty("e_mail")
     private String email;
 
     @JsonIgnore

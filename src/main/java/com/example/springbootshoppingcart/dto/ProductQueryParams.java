@@ -2,7 +2,7 @@ package com.example.springbootshoppingcart.dto;
 
 import com.example.springbootshoppingcart.constant.ProductCategory;
 
-public class ProdcuctQueryParams {
+public class ProductQueryParams {
     private ProductCategory category;
     private String search;
 

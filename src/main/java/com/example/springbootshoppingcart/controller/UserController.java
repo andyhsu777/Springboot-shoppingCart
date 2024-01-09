@@ -1,5 +1,6 @@
 package com.example.springbootshoppingcart.controller;
 
+import com.example.springbootshoppingcart.dto.UserLoginRequest;
 import com.example.springbootshoppingcart.dto.UserRegisterRequest;
 import com.example.springbootshoppingcart.model.User;
 import com.example.springbootshoppingcart.service.UserService;
@@ -22,5 +23,11 @@ public class UserController {
         Integer userId = userService.register(userRegisterRequest);
         User user = userService.getUserById(userId);
         return ResponseEntity.status(HttpStatus.CREATED).body(user);
+    }
+
+    @PostMapping("/user/login")
+    public ResponseEntity<User> login(@RequestBody @Valid UserLoginRequest userLoginRequest){
+        User user = userService.login(userLoginRequest);
+        return ResponseEntity.status(HttpStatus.OK).body(user);
     }
 }

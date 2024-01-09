@@ -11,8 +11,8 @@ public class Product {
     private String imageUrl;
     private Integer price;
     private Integer stock;
-    private String descripition;
-    private Date createDate;
+    private String description;
+    private Date createdDate;
     private Date lastModifiedDate;
 
     public Integer getProductId() {
@@ -63,20 +63,20 @@ public class Product {
         this.stock = stock;
     }
 
-    public String getDescripition() {
-        return descripition;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescripition(String descripition) {
-        this.descripition = descripition;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public Date getCreateDate() {
-        return createDate;
+    public Date getCreatedDate() {
+        return createdDate;
     }
 
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
     }
 
     public Date getLastModifiedDate() {

@@ -1,8 +1,7 @@
 package com.example.springbootshoppingcart.dao.impl;
 
-import com.example.springbootshoppingcart.constant.ProductCategory;
 import com.example.springbootshoppingcart.dao.ProductDao;
-import com.example.springbootshoppingcart.dto.ProdcuctQueryParams;
+import com.example.springbootshoppingcart.dto.ProductQueryParams;
 import com.example.springbootshoppingcart.dto.ProductRequest;
 import com.example.springbootshoppingcart.model.Product;
 import com.example.springbootshoppingcart.rowmapper.ProductRowMapper;
@@ -22,28 +21,28 @@ public class ProductDaoImpl implements ProductDao {
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
     @Override
-    public Integer countProducts(ProdcuctQueryParams prodcuctQueryParams) {
+    public Integer countProducts(ProductQueryParams productQueryParams) {
         String sql = "SELECT count(*) from product where 1 =1 ";
         Map<String, Object> map = new HashMap<>();
         //Filter condition
-        sql = addFilteringSql(sql,map,prodcuctQueryParams);
+        sql = addFilteringSql(sql,map, productQueryParams);
         Integer total =  namedParameterJdbcTemplate.queryForObject(sql, map, Integer.class);
         return total;
     }
 
     @Override
-    public List<Product> getProducts(ProdcuctQueryParams prodcuctQueryParams) {
+    public List<Product> getProducts(ProductQueryParams productQueryParams) {
         String sql = "SELECT product_id, product_name, category, image_url," +
                 "price, stock, description, created_date, last_modified_date " +
                 "FROM product WHERE 1=1";
         Map<String, Object> map = new HashMap<>();
 
-        sql = addFilteringSql(sql,map,prodcuctQueryParams);
+        sql = addFilteringSql(sql,map, productQueryParams);
 
-        sql = sql + " ORDER BY " + prodcuctQueryParams.getOrderBy() + " " + prodcuctQueryParams.getSort();
+        sql = sql + " ORDER BY " + productQueryParams.getOrderBy() + " " + productQueryParams.getSort();
         sql = sql + " LIMIT :limit OFFSET :offset";
-        map.put("limit",prodcuctQueryParams.getLimit());
-        map.put("offset",prodcuctQueryParams.getOffset());
+        map.put("limit", productQueryParams.getLimit());
+        map.put("offset", productQueryParams.getOffset());
         List<Product> productList = namedParameterJdbcTemplate.query(sql, map, new ProductRowMapper());
         return productList;
     }
@@ -119,15 +118,15 @@ public class ProductDaoImpl implements ProductDao {
         namedParameterJdbcTemplate.update(sql, map);
     }
 
-    private String addFilteringSql (String sql, Map<String,Object> map, ProdcuctQueryParams prodcuctQueryParams ){
-        if (prodcuctQueryParams.getCategory() != null) {
+    private String addFilteringSql (String sql, Map<String,Object> map, ProductQueryParams productQueryParams){
+        if (productQueryParams.getCategory() != null) {
             sql = sql + " AND category = :category";
-            map.put("category", prodcuctQueryParams.getCategory().name());
+            map.put("category", productQueryParams.getCategory().name());
         }
 
-        if (prodcuctQueryParams.getSearch() != null) {
+        if (productQueryParams.getSearch() != null) {
             sql = sql + " AND product_name LIKE :search";
-            map.put("search", "%" + prodcuctQueryParams.getSearch() + "%");
+            map.put("search", "%" + productQueryParams.getSearch() + "%");
         }
         return sql;
     }
